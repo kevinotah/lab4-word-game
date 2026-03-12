@@ -29,3 +29,7 @@ In addition to the key learnings mentioned earlier, I learned that software deve
 # Reflection
 
 It felt like hours, but ultimately, I think using CoPilot did make me faster in the sense that it helped me identify issues and provided suggestions for how to fix them, which saved me time compared to trying to figure everything out on my own. I didn't always feel in control of the code, especially when CoPilot was asking questions instead of providing direct guidance, which made me feel a bit lost at times. I would definitely use AI in a similar way next time, but I would try to be more specific in my prompts to get more direct guidance from CoPilot, especially when I'm feeling confused or stuck on a particular concept or implementation detail.
+
+# Testing Experience
+
+I have never written tests before, so this was a new experience for me and I had to ask CoPilot (plan mode) to guide me on how to do tests with pytest, including the setup of pytest in the first place. I learned why tests are important and how they can help catch bugs and ensure that my code is working as expected. Writing them however, I had to employ A LOT of help from ChatGPT (I forgot to use CoPilot - bad behaviour) to understand how to write effective tests, especially for edge cases and potential bugs. This is something I definitely need to work on and improve, as writing good tests is an important skill for any software developer.
