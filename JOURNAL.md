@@ -1,6 +1,107 @@
 # This JOURNAL.md file gets automatically updated by the journal-logger agent after every interaction with CoPilot. It serves as a comprehensive log of all prompts, responses, changes made, and reflections during the development process. Each entry is formatted consistently for easy reading and is listed in reverse chronological order, with the most recent interactions at the top.
 
 ### **New Interaction**
+- **Date**: 03-12-2026 15:50
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Record this interaction in JOURNAL.md per repository policy. User provided function contracts and then asked to move to implementation directly: 'Can we please just move along to implementation? Update main.py with all the code I've sent you so far.' Context: this indicates Socratic mode should be considered turned off for direct implementation in this turn. Reconcile if needed and append.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: OFF
+- **Changes Made**: Logged this interaction in JOURNAL.md and prepended a new entry following the repository template.
+- **Context and Reasons for Changes**: Captured the explicit user request to proceed with direct implementation, marking Socratic mode as off for this turn and preserving traceability under the journaling policy.
+
+### **New Interaction**
+- **Date**: 03-12-2026 15:38
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Record this interaction in JOURNAL.md per repository policy. The user provided a detailed plain-English play_round flow including starting state, per-turn steps, validation, update_game_state usage, helper updates, and win/lose end conditions. Context: step-by-step Hangman implementation under constraints (no while True, no string replacement, replay support, logic/UI separation). Reconcile if needed and append.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Logged this interaction in JOURNAL.md using the repository template and prepended it in reverse-chronological order.
+- **Context and Reasons for Changes**: Preserved project journaling policy by recording the user's implementation guidance context for play_round and constraints, with sequential-turn fast-path reconciliation skip.
+
+### **New Interaction**
+- **Date**: 03-12-2026 15:29
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Record this interaction in JOURNAL.md per repository policy. The user submitted a helper function:
+
+def get_incorrect_guesses(secret_word: str, guessed_letters: list[str]) -> list[str]:
+	secret_word_lower = secret_word.lower()
+	incorrect = []
+
+	for guess in guessed_letters:
+		if guess.lower() not in secret_word_lower:
+			incorrect.append(guess)
+
+	return incorrect
+
+Context: they are implementing Hangman step-by-step under constraints (no while True, no string replacement functions, replay support, strict logic/UI separation). Reconcile if needed and append.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Prepended a new journal entry documenting the helper function submission for `get_incorrect_guesses` and the associated Hangman constraints context.
+- **Context and Reasons for Changes**: The top-entry duplicate check did not match this prompt and this turn is sequential from the previous logged turn, so reconciliation was skipped and the current interaction was prepended.
+
+### **New Interaction**
+- **Date**: 03-12-2026 14:56
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Record this interaction in JOURNAL.md per repository policy. The user submitted two helper functions for review:
+
+def is_win(secret_word: str, guessed_letters: list[str]) -> bool:
+	secret_word = secret_word.lower()
+	guessed_letters = [g.lower() for g in guessed_letters]
+
+	unique_letters = set(secret_word)
+
+	return unique_letters.issubset(set(guessed_letters))
+
+def is_lose(lives: int) -> bool:
+	return lives <= 0
+
+Context: Step 2 of Hangman implementation under constraints (no while True, no string replacement functions, replay support, strict logic/UI separation). Reconcile if needed and append.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Prepended a new journal entry documenting the Step 2 helper-function review request for `is_win` and `is_lose`.
+- **Context and Reasons for Changes**: The top-entry duplicate check did not match this prompt, and session state indicated this is the immediate next turn, so reconciliation was skipped and this interaction was prepended directly.
+
+### **New Interaction**
+- **Date**: 03-12-2026 14:52
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Record this interaction in JOURNAL.md per repository policy. The user submitted a proposed function:
+
+def render_masked_word(secret_word: str, guessed_letters: list[str]) -> str:
+	secret_word = secret_word.lower()
+	guessed_letters = [g.lower() for g in guessed_letters]
+
+	masked = []
+
+	for char in secret_word:
+		if char in guessed_letters:
+			masked.append(char)
+		else:
+			masked.append("_")
+
+	return " ".join(masked)
+
+Context: this is Step 1 of implementation for full Hangman plan under constraints (no while True, no string replacement functions, replay support, logic/UI separation). Reconcile if needed and append this turn.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Logged the interaction that records the user-proposed `render_masked_word` implementation as Step 1 for Hangman and prepended it as the newest journal entry.
+- **Context and Reasons for Changes**: Fast-path duplicate check did not match the current prompt. Session journal state indicated this is the immediate sequential turn after the previous entry, so reconciliation was skipped and only this turn was prepended.
+
+### **New Interaction**
+- **Date**: 03-12-2026 14:46
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Record this interaction in JOURNAL.md following repository policy. The user requested: 'Start implementation' after receiving a phased plan for building the full Hangman game with constraints (no while True, no string replacement functions, replay support, strict logic/UI separation). Reconcile if needed and append this turn.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: GPT-5.3-Codex
+- **Socratic Mode**: ON
+- **Changes Made**: Reconciliation was evaluated and skipped via sequential-turn fast path, then this interaction was prepended as the newest journal entry.
+- **Context and Reasons for Changes**: The top-entry duplicate check did not match this prompt, and session journal state showed the prior entry as the immediate previous turn, so no gap reconciliation window was required before appending this turn.
+
+### **New Interaction**
 - **Date**: 03-12-2026 14:26
 - **User**: kevin.ogbusuo@epita.fr
 - **Prompt**: Log the current user turn asking to verify whether any conversations were skipped in JOURNAL.md, then run a completeness check across recent session turns and reconcile any missing entries. Return whether any were missing and what was added.
