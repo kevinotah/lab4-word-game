@@ -1,6 +1,16 @@
 # This JOURNAL.md file gets automatically updated by the journal-logger agent after every interaction with CoPilot. It serves as a comprehensive log of all prompts, responses, changes made, and reflections during the development process. Each entry is formatted consistently for easy reading and is listed in reverse chronological order, with the most recent interactions at the top.
 
 ### **New Interaction**
+- **Date**: 03-12-2026 16:42
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Alright, I think everything is set. One last thing. I need a well detailed README.md file about the whole project including how to run the game and the tests.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: Claude Sonnet 4.6
+- **Socratic Mode**: OFF
+- **Changes Made**: Created `README.md` with full project documentation: project overview, structure table, game rules, detailed function-by-function code walkthrough, prerequisites, setup/installation steps, how to run the game, how to run the tests with expected output, a test coverage table (37 tests across 7 functions), design decisions, and known limitations.
+- **Context and Reasons for Changes**: User requested a comprehensive README.md as the final deliverable. Read `main.py`, `test_main.py`, `MY_NOTES.md`, and `REPORT.md` to gather all necessary details before writing.
+
+### **New Interaction**
 - **Date**: 03-12-2026 16:25
 - **User**: kevin.ogbusuo@epita.fr
 - **Prompt**: Reconcile JOURNAL.md against all recent session turns and append any missing entries. Recent interactions to cover include: user asking for more tests for the game, Copilot reading main.py and test_main.py, adding 27 new tests covering render_masked_word, is_win, is_lose, get_incorrect_guesses, render_state, and choose_secret_word, running pytest and confirming 37/37 passing, and the current request to update the journal. Append all missing entries in reverse-chronological order per policy and report what was added.
