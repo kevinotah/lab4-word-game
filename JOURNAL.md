@@ -1,6 +1,26 @@
 # This JOURNAL.md file gets automatically updated by the journal-logger agent after every interaction with CoPilot. It serves as a comprehensive log of all prompts, responses, changes made, and reflections during the development process. Each entry is formatted consistently for easy reading and is listed in reverse chronological order, with the most recent interactions at the top.
 
 ### **New Interaction**
+- **Date**: 03-12-2026 16:25
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Reconcile JOURNAL.md against all recent session turns and append any missing entries. Recent interactions to cover include: user asking for more tests for the game, Copilot reading main.py and test_main.py, adding 27 new tests covering render_masked_word, is_win, is_lose, get_incorrect_guesses, render_state, and choose_secret_word, running pytest and confirming 37/37 passing, and the current request to update the journal. Append all missing entries in reverse-chronological order per policy and report what was added.
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: Claude Sonnet 4.6
+- **Socratic Mode**: OFF
+- **Changes Made**: Prepended 2 missing entries to JOURNAL.md: the test-expansion session (turn 15) and this reconciliation request (turn 16).
+- **Context and Reasons for Changes**: Reconciliation run to close the gap between last logged turn (14, 15:50) and the current turn. Two entries were missing: the test-writing interaction and this journal-update request.
+
+### **New Interaction**
+- **Date**: 03-12-2026 16:10
+- **User**: kevin.ogbusuo@epita.fr
+- **Prompt**: Add more tests for the game. (User requested expanded test coverage for the Hangman game functions.)
+- **CoPilot Mode**: Agent
+- **CoPilot Model**: Claude Sonnet 4.6
+- **Socratic Mode**: OFF
+- **Changes Made**: Read main.py and test_main.py to understand existing coverage (10 tests passing). Added 27 new tests to test_main.py covering: `render_masked_word` (word fully guessed, partial guesses, no guesses, case-insensitivity), `is_win` (win condition, not yet won), `is_lose` (zero lives, negative lives, lives remaining), `get_incorrect_guesses` (all incorrect, mixed, all correct, empty list), `render_state` (various lives counts, game over), and `choose_secret_word` (returns valid word from list, is a string, non-empty). Ran pytest and confirmed 37/37 tests passing.
+- **Context and Reasons for Changes**: User requested broader test coverage; Socratic mode was off so direct implementation was provided. All new tests are unit-level, isolated, and follow the existing pytest style in test_main.py.
+
+### **New Interaction**
 - **Date**: 03-12-2026 15:50
 - **User**: kevin.ogbusuo@epita.fr
 - **Prompt**: Record this interaction in JOURNAL.md per repository policy. User provided function contracts and then asked to move to implementation directly: 'Can we please just move along to implementation? Update main.py with all the code I've sent you so far.' Context: this indicates Socratic mode should be considered turned off for direct implementation in this turn. Reconcile if needed and append.
