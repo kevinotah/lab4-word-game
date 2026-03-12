@@ -33,3 +33,15 @@ It felt like hours, but ultimately, I think using CoPilot did make me faster in 
 # Testing Experience
 
 I have never written tests before, so this was a new experience for me and I had to ask CoPilot (plan mode) to guide me on how to do tests with pytest, including the setup of pytest in the first place. I learned why tests are important and how they can help catch bugs and ensure that my code is working as expected. For guidance, CoPilot made several helpful suggestions and asked good questions to help me figure out where to start from. Writing them however, I had to employ A LOT of help from ChatGPT (I forgot to use CoPilot - bad behaviour) to understand how to write effective tests, especially for edge cases and potential bugs. This is something I definitely need to work on and improve, as writing good tests is an important skill for any software developer.
+
+# Other Stuff I Wrote In NotePad
+
+I updated the journal-logger.agent.md and copilot-instructions.md files and told CoPilot to read and acknowledge them. It did, but forgot to populate journal.md. I had to manually remind it to do that and it went ahead to populate it for the two interactions (updating the files and me reminding it to update journal.md). It also "learned" to always run the agent file after every interaction. That was dope.
+
+After prompting CoPilot on App Variables, it challenged my original thinking on how to keep track of win/lose status and also my idea of using a dictionary to keep track of missing letters. It also asked me questions to "back up" these challenges. Socratic questions.
+
+On App Rules/Variants, it made me aware of an overlooked potential issue. It asked me if an uppercase and lowercase guess count the same. And if yes, that should be another invariant.
+
+It was very verbose when prompted for bugs. Lots of questions, mostly good, but some left me wondering how they could be problems.
+
+All in all, the responses to all the prompts were largely helpful and forces critical thinking of the program implementation and also about your own approach to solving this humungous task of building a relatively complicated program from scratch.
