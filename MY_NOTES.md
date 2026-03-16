@@ -65,3 +65,13 @@ Invariants:
 - Win/lose bugs: Player could "win" when some letters are still hidden. Win and lose conditions might be true at the same time.
 - State tracking bugs: Does the guessed letters variable allow duplicates? Guessed letters and wrong guesses may not be tracked consistently.
 - Word selection bugs: There could be problems with the word list. It could be empty, for instance. The word itself could contain spaces or punctuation when the game expects letters.
+
+
+# AUTO PLAY
+For auto play, my initial and immediate thought was to get the computer to randomly take a letter from a list of lowecase letters and pass that into the game. To achieve this, I made duplicate functions of certain parts of my code to accomodate the auto generation of letters. It feels like there's a better way to do this but time was not on my side. 
+
+I was reminded by the teacher that the computer could guess the same letter, so in implementation, I made sure every guess was removed from the lowercase list after each "guess".
+
+To get run the function in auto, I added a step that prompts the user to play as a user or in auto play.
+
+I believe this affects the existing tests and may break a few things. And even more tests need to be added to make everything stable. But that's work for another day.

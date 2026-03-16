@@ -1,4 +1,4 @@
-import random
+import random, string
 
 
 WORD_LIST = [
@@ -111,6 +111,29 @@ def prompt_guess(guessed_letters: list[str]) -> str:
     return guess
 
 
+def auto_prompt_guess(guessed_letters: list[str]) -> str:
+    guess = ""
+    is_valid = False
+
+    while not is_valid:
+        characters = string.ascii_lowercase
+        guess = random.choice(characters)
+        characters.replace(guess, "")
+
+        if len(guess) != 1 or not guess.isalpha():
+            print("Invalid input. Please enter a single letter.")
+            continue
+
+        normalized_guessed = [letter.lower() for letter in guessed_letters]
+        if guess in normalized_guessed:
+            print("You already guessed that letter. Try another one.")
+            continue
+
+        is_valid = True
+
+    return guess
+
+
 def display_state(
     masked_word: str,
     guessed_letters: list[str],
@@ -135,6 +158,20 @@ def prompt_replay() -> bool:
 
     while not is_valid:
         answer = input("Play again? (y/n): ").strip().lower()
+        if answer in ["y", "yes"]:
+            return True
+        if answer in ["n", "no"]:
+            return False
+        print("Please enter y or n.")
+
+    return False
+
+def auto_prompt_replay() -> bool:
+    answer = ""
+    is_valid = False
+
+    while not is_valid:
+        answer = random.choice(["y", "n"])
         if answer in ["y", "yes"]:
             return True
         if answer in ["n", "no"]:
@@ -188,6 +225,49 @@ def play_round(secret_word: str, max_lives: int = 6) -> tuple[list[str], int]:
     display_state(masked_word, guessed_letters, incorrect_guesses, current_lives, "")
     return guessed_letters, lives
 
+def auto_play_round(secret_word: str, max_lives: int = 6) -> tuple[list[str], int]:
+    guessed_letters: list[str] = []
+    lives = max_lives
+    turn_message = ""
+    round_active = True
+
+    while round_active:
+        masked_word, incorrect_guesses, current_lives = render_state(
+            secret_word,
+            guessed_letters,
+            lives,
+        )
+        display_state(masked_word, guessed_letters, incorrect_guesses, current_lives, turn_message)
+
+        if is_win(secret_word, guessed_letters):
+            print("\nYou win! The word was:", secret_word)
+            break
+
+        if is_lose(lives):
+            print("\nYou lose! The word was:", secret_word)
+            break
+
+        guess = auto_prompt_guess(guessed_letters)
+        guessed_letters, lives, turn_message = update_game_state(
+            secret_word,
+            guessed_letters,
+            guess,
+            lives,
+        )
+
+        round_active = not is_win(secret_word, guessed_letters) and not is_lose(lives)
+
+    if is_win(secret_word, guessed_letters):
+        return guessed_letters, lives
+
+    print("\nFinal state:")
+    masked_word, incorrect_guesses, current_lives = render_state(
+        secret_word,
+        guessed_letters,
+        lives,
+    )
+    display_state(masked_word, guessed_letters, incorrect_guesses, current_lives, "")
+    return guessed_letters, lives
 
 def play_game(word_list: list[str], max_lives: int = 6) -> None:
     play_again = True
@@ -198,8 +278,22 @@ def play_game(word_list: list[str], max_lives: int = 6) -> None:
         play_again = prompt_replay()
 
     print("Thanks for playing!")
+    
+def auto_play_game(word_list: list[str], max_lives: int = 6) -> None:
+    play_again = True
+
+    while play_again:
+        secret_word = choose_secret_word(word_list)
+        auto_play_round(secret_word, max_lives)
+        play_again = auto_prompt_replay()
+
+    print("Thanks for playing!")
 
 
 if __name__ == "__main__":
-    play_game(WORD_LIST)
+    option = int(input("Auto play or play as user? Type 1 or 2\n\n1. Auto\n2. User\n\n"))
+    if option == 1:
+        auto_play_game(WORD_LIST)
+    elif option == 2:
+        play_game(WORD_LIST)
     
